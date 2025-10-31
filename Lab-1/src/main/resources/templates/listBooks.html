@@ -49,6 +49,11 @@
                    th:text="'Title: ' + ${book.getTitle()} + ', Genre: ' + ${book.getAverageRating()} + ', Rating: ' + ${book.getAverageRating()}" />
         </div>
 
+        <h2>Most Popular Book</h2>
+        <p>Name: <span th:text="${mostPopularBook.getTitle()}"></span></p>
+        <p>Number of Reservations: <span th:text="${mostPopularBookCount}"></span></p>
+
+
         <h2>Enter your information:</h2>
         <label>Your Name:</label>
         <input type="text" name="readerName" required><br/>
