@@ -14,10 +14,13 @@ public class BookReservationServiceImpl implements BookReservationService {
         this.bookReservationRepository = bookReservationRepository;
     }
 
-
     @Override
     public BookReservation placeReservation(String bookTitle, String readerName, String readerAddress, int numberOfCopies) {
+        if(bookTitle == null || bookTitle.isEmpty() || readerName == null || readerName.isEmpty() || readerAddress == null || readerAddress.isEmpty()){
+            throw  new IllegalArgumentException();
+        }
         BookReservation reservation = new BookReservation(bookTitle, readerName, readerAddress, (long) numberOfCopies);
-        return bookReservationRepository.save(reservation);
+        return this.bookReservationRepository.save(reservation);
+
     }
 }

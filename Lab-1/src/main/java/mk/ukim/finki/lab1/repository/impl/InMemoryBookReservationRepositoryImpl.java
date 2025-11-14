@@ -6,7 +6,7 @@ import mk.ukim.finki.lab1.repository.BookReservationRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class InMemoryBookReservationRepository implements BookReservationRepository {
+public class InMemoryBookReservationRepositoryImpl implements BookReservationRepository {
 
     @Override
     public BookReservation save(BookReservation bookReservation){
