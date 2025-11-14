@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Authors Page</title>
+</head>
+<body class="bg-light">
+
+<div class="container mt-5">
+  <div class="card shadow p-4">
+
+  <h4 class="mb-3 text-primary">Choose an Author:</h4>
+
+  <div th:each="author : ${authors}" class="book-option">
+
+    <!-- RADIO (belongs to the reservation form only!) -->
+    <label class="d-flex align-items-center w-100">
+      <input type="radio" class="form-check-input me-3"
+             name="authorName"
+             th:value="${author.name}" required>
+
+      <span>
+                            <b th:text="${author.name}"></b>
+                            <small class="text-muted">
+                                (Country: <span th:text="${author.country}"></span>,
+                                Biography: <span th:text="${author.biography}"></span>)
+                            </small>
+                        </span>
+    </label>
+
+
+    <th:block>
+      <a th:href="@{'/author/delete/{id}' (id=${author.getId()})}"
+         class="btn btn-sm btn-info edit-product">
+        <i class="fa fa-trash">Delete</i>
+      </a>
+    </th:block>
+
+    <th:block>
+      <a th:href="@{'/author/edit/{id}' (id=${author.getId()})}"
+         class="btn btn-sm btn-info edit-product">
+        <i class="fa fa-trash">Edit</i>
+      </a>
+    </th:block>
+    <form th:action="@{'/author/add-author/{id}' (id=${author.getId()})}"
+          th:method="POST">
+      <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-trash">Add
+        author</i></button>
+    </form>
+
+
+
+
+
+
+
+    <!-- DELETE BUTTON - separate form -->
+    <!--                    <form th:action="@{'/books/delete/' ${book.id}}" method="post" class="mt-2">-->
+    <!--                    <form th:action="@{'/books/delete/{id}' (id=${book.getId()})}" th:method="POST">-->
+
+    <!--                        <button class="btn btn-danger btn-sm">Delete</button>-->
+    <!--                    </form>-->
+
+    <!-- EDIT BUTTON - separate form -->
+    <!--                    <form th:action="@{'<th:block>
+                                        <a th:href="@{'/products/edit-form/{id}' (id=${product.getId()})}"
+                                           class="btn btn-sm btn-info edit-product">
+                                            <i class="fa fa-trash">Edit</i>
+                                        </a>
+                                    </th:block>
+    ' + ${book.id}}" method="get" class="mt-1">-->
+    <!--                        <button class="btn btn-warning btn-sm">Edit</button>-->
+    <!--                    </form>-->
+
+  </div>
+
+</body>
+</html>
