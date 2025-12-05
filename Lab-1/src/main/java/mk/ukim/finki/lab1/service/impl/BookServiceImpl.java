@@ -34,6 +34,13 @@ public class BookServiceImpl implements BookService {
         return bookRepository.findByTitleContainingIgnoreCaseOrAverageRatingGreaterThanEqual(text, rating);
     }
 
+
+    @Override
+    public List<Book> searchBooksByRating(Double rating) {
+        return bookRepository.findByAverageRatingGreaterThanEqual(rating);
+    }
+
+
     @Override
     public List<Book> findAllByAuthor_Id(Long authorId){
         return bookRepository.findAllByAuthor_Id(authorId);

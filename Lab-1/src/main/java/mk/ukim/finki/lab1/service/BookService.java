@@ -10,6 +10,8 @@ public interface BookService {
     List<Book> listAll();
     List<Book> searchBooks(String text, Double rating);
 
+    List<Book> searchBooksByRating(Double rating);
+
     Book update(Long bookId,
                 String title,
                 String genre,

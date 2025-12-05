@@ -26,7 +26,8 @@ public class AuthorController {
 
     @GetMapping
     public String listAuthors(Model model) {
-        model.addAttribute("authors", authorService.listAll());
+        List <Author> authors = authorService.getAllAuthorsSortedBySurname();
+        model.addAttribute("authors", authors);
         return "listAuthors";
     }
 

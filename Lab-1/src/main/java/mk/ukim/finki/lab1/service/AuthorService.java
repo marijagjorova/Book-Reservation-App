@@ -15,4 +15,5 @@ public interface AuthorService {
     void delete(Long id);
 
     Author create(String name, String surname, String country, String biography);
+    List<Author> getAllAuthorsSortedBySurname();
 }

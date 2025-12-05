@@ -34,9 +34,10 @@ public class BookController {
             Model model
     ) {
         List<Book> books;
-        if ((searchText != null && !searchText.isBlank())
-                || rating != null) {
-            books = bookService.searchBooks(searchText, rating);
+        if (rating != null) {
+            books = bookService.searchBooksByRating(rating);
+        } else if (searchText != null && !searchText.isBlank()) {
+            books = bookService.searchBooks(searchText, null);
         } else {
             books = bookService.listAll();
         }

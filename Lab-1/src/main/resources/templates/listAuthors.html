@@ -21,7 +21,7 @@
                        th:value="${author.name}" required>
 
                 <div>
-                    <h5 class="mb-1" th:text="${author.name}"></h5>
+                    <h5 class="mb-1" th:text="${author.name}+ ' ' + ${author.surname}"></h5>
                     <p class="mb-1 text-muted">
                         <strong>Country:</strong> <span th:text="${author.country}"></span><br>
                         <strong>Biography:</strong> <span th:text="${author.biography}"></span>

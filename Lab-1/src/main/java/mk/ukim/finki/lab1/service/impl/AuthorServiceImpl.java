@@ -68,4 +68,9 @@ public class AuthorServiceImpl implements AuthorService {
         Author author = new Author( name, surname, country, biography);
         return authorRepository.save(author);
     }
+
+    @Override
+    public List<Author> getAllAuthorsSortedBySurname() {
+        return authorRepository.findAllByOrderBySurname();
+    }
 }

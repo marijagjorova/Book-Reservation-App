@@ -67,6 +67,19 @@
 
             <hr/>
 
+            <form th:action="@{/books}" method="get" class="row g-3 mb-4">
+                <div class="col-md-5">
+                    <label class="form-label">Search by Rating</label>
+                    <input type="number" class="form-control" name="rating" min="0" max="10" step="0.1">
+                </div>
+
+                <div class="col-md-3 d-flex align-items-end">
+                    <button type="submit" class="btn btn-primary w-100">Search</button>
+                </div>
+            </form>
+
+
+
             <!-- RESERVATION FORM -->
             <form th:action="@{/bookReservation}" method="post">
 
