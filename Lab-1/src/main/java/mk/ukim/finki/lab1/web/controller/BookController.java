@@ -5,6 +5,7 @@ import mk.ukim.finki.lab1.model.Book;
 import mk.ukim.finki.lab1.service.AuthorService;
 import mk.ukim.finki.lab1.service.BookReservationService;
 import mk.ukim.finki.lab1.service.BookService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -46,12 +47,14 @@ public class BookController {
     }
 
     @GetMapping("/book-form")
+    @PreAuthorize("hasRole('ADMIN')")
     public String getAddBookPage(Model model){
         model.addAttribute("authors",authorService.findAll());
         return "book-form";
     }
 
     @GetMapping("/book-form/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public String getEditBookPage(@PathVariable Long id, Model model){
         model.addAttribute("book", bookService.findById(id));
         model.addAttribute("authors", authorService.findAll());
@@ -84,6 +87,7 @@ public class BookController {
 //    }
 
     @PostMapping("/add")
+    @PreAuthorize("hasRole('ADMIN')")
     public String addOrEditBook(
             @RequestParam(required = false) Long id,
             @RequestParam String title,
@@ -101,6 +105,7 @@ public class BookController {
     }
 
     @PostMapping("/delete/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public String deleteBook(@PathVariable Long id) {
         bookService.delete(id);
         return "redirect:/books";

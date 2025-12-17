@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Book Reservation - Choose a Book</title>
@@ -104,23 +104,26 @@
                         </span>
                     </label>
 
+                    <th:block sec:authorize="hasRole('ADMIN')">
                     <form th:action="@{/books/delete/{id}(id=${book.id})}" method="post" class="d-inline">
                         <button type="submit" class="btn btn-danger btn-sm mt-2">Delete</button>
                     </form>
+                    </th:block>
 
+                    <th:block sec:authorize="hasRole('ADMIN')">
                         <a th:href="@{/books/book-form/{id}(id=${book.id})}"
                            class="btn btn-sm btn-info edit-product">
                             <i class="fa fa-trash">Edit</i>
                         </a>
-
+                    </th:block>
                 </div>
 
-                <div class="text-center mt-4">
+                <div class="text-center mt-4" sec:authorize="hasRole('ADMIN')">
                     <a href="/books/book-form" class="btn btn-primary btn-lg px-4">
                         <i class="fa fa-plus me-2"></i> Add New Book
                     </a>
-
                 </div>
+
 
                 <h4 class="mt-4 text-primary">Your Information:</h4>
 
